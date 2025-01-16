@@ -1,5 +1,9 @@
 # ISHAN KUMAR
 
+![Site Preview](./public/site_image.png)
+
+[Visit](https://your-live-site-link.com](https://ishan-kumar.netlify.app))
+
 A sleek and responsive portfolio website showcasing my skills, projects, and resume. Built with **Next.js** and styled using **Tailwind CSS** with dark mode support.
 
 ## Features
@@ -9,10 +13,7 @@ A sleek and responsive portfolio website showcasing my skills, projects, and res
 - Skills and tools section
 - Social media integration
 
-## Preview
-![Site Preview](./public/site_image.png)
 
-[Visit](https://your-live-site-link.com](https://ishan-kumar.netlify.app))
 
 ## Technologies Used
 - **Next.js**
