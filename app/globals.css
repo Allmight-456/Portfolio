@@ -4,160 +4,67 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
 }
- 
+
+/* Mobile-specific animation override */
+@media (max-width: 768px) {
+  section {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: background-color 0.3s ease;
+  }
+}
+
 @font-face {
   font-family: 'burtons';
   src: url('/public/Burtons.otf') format('opentype');
 }
 
-/* Main container styling */
-.portfolio-container {
-  @apply rounded-2xl overflow-hidden shadow-xl;
-  background: linear-gradient(to right, #fdf6e3, #faf5eb);
-}
-
-/* Section transitions and styling */
-.section-transition {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-.section-transition.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile menu transitions */
-.mobile-menu-enter {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.mobile-menu-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 200ms, transform 200ms;
-}
-
-.mobile-menu-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 200ms, transform 200ms;
-}
-
-/* Modern card styling */
-.project-card {
-  @apply relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02];
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.project-card:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.project-overlay {
-  @apply absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300;
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-/* Section backgrounds */
-.landing-section {
-  background: linear-gradient(to right, #fff8e6, #fff3d6);
+/* Section styles */
+section {
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
-.landing-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(251, 243, 219, 0.2) 0%, rgba(251, 243, 219, 0.1) 50%, transparent 100%);
-  pointer-events: none;
+.landing-section {
+  background: linear-gradient(to right, #fff8e6, #fff3d6);
 }
 
 .skills-section {
   background: linear-gradient(to right, #f5ead0, #ffefd0);
-  position: relative;
-}
-
-.skills-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 239, 208, 0.2) 0%, rgba(255, 239, 208, 0.1) 50%, transparent 100%);
-  pointer-events: none;
 }
 
 .projects-section {
   background: linear-gradient(to right, #f7eedb, #fff8e6);
-  position: relative;
 }
 
-.projects-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 248, 230, 0.2) 0%, rgba(255, 248, 230, 0.1) 50%, transparent 100%);
-  pointer-events: none;
-}
-
-/* Dark mode variations */
-.dark .portfolio-container {
-  background: linear-gradient(to right, #1a1b1e, #2c2e33);
-}
-
+/* Dark mode section backgrounds */
 .dark .landing-section {
-  background: linear-gradient(to right, #1e1b4b, #1e1e3b);
+  background: linear-gradient(to right, #000000, #111111);
 }
 
 .dark .skills-section {
-  background: linear-gradient(to right, #1e1e3b, #1e1b4b);
+  background: linear-gradient(to right, #000000, #111111);
 }
 
 .dark .projects-section {
-  background: linear-gradient(to right, #1e1b4b, #1e1e3b);
+  background: linear-gradient(to right, #000000, #111111);
 }
 
-/* Social icons styling */
-.social-icons {
-  @apply flex justify-center space-x-8 sm:space-x-16 text-4xl sm:text-5xl text-gray-600 dark:text-gray-300;
-  max-width: 100%;
-  padding: 0 1rem;
+/* Navigation styles */
+nav {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(20, 184, 166, 0.1);
 }
 
-.social-icons a {
-  @apply transition-transform duration-200 hover:scale-110 hover:text-teal-500;
-}
-
-/* Navigation button styling */
 .nav-button {
-  @apply relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-burtons text-sm transition-all duration-300 ease-out rounded-lg shadow-md;
+  @apply relative inline-flex items-center justify-center px-3 py-1.5 overflow-hidden font-burtons text-sm transition-all duration-300 ease-out rounded-lg shadow-md;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(20, 184, 166, 0.2);
@@ -180,45 +87,39 @@ html {
 }
 
 .nav-button span {
-  @apply relative z-10 text-teal-600 font-medium transition-colors duration-300;
+  @apply relative z-10 text-teal-600 font-medium transition-colors duration-300 text-sm;
 }
 
 .nav-button:hover span {
   @apply text-white;
 }
 
-/* Dark mode button variations */
-.dark .nav-button {
-  background: rgba(15, 118, 110, 0.1);
-  border-color: rgba(20, 184, 166, 0.3);
+/* Dark mode navigation */
+.dark nav {
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.1);
 }
 
-.dark .nav-button span {
-  @apply text-teal-400;
+.dark .mobile-menu {
+  background: rgba(0, 0, 0, 0.95) !important;
 }
 
-.dark .nav-button:hover span {
-  @apply text-white;
+/* Mobile menu */
+.mobile-menu {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(20, 184, 166, 0.1);
 }
 
-/* Theme toggle button */
-.theme-toggle {
-  @apply relative p-2 rounded-full transition-transform duration-300 hover:scale-110;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(20, 184, 166, 0.2);
+/* Social icons styling */
+.social-icons {
+  @apply flex justify-center space-x-8 sm:space-x-16 text-4xl sm:text-5xl text-gray-600 dark:text-gray-300;
+  max-width: 100%;
+  padding: 0 1rem;
 }
 
-.theme-toggle:hover {
-  @apply bg-teal-500/10;
-}
-
-.dark .theme-toggle {
-  @apply border-teal-400/30 text-teal-400;
-}
-
-.dark .theme-toggle:hover {
-  @apply bg-teal-400/10;
+.social-icons a {
+  @apply transition-transform duration-200 hover:scale-110 hover:text-teal-500;
 }
 
 /* Skill card styling */
@@ -244,11 +145,68 @@ html {
 }
 
 .dark .skill-card {
-  background: rgba(31, 41, 55, 0.95);
+  background: rgba(0, 0, 0, 0.75);
   border-color: rgba(45, 212, 191, 0.1);
+  backdrop-filter: blur(12px);
 }
 
 .dark .skill-card:hover {
   border-color: rgba(45, 212, 191, 0.3);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Project card styling */
+.project-card {
+  @apply relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02];
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.project-overlay {
+  @apply absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Dark mode project cards */
+.dark .project-card {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(45, 212, 191, 0.1);
+}
+
+.dark .project-card:hover {
+  border-color: rgba(45, 212, 191, 0.3);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
 }
