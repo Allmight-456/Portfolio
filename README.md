@@ -1,6 +1,6 @@
 # ISHAN KUMAR
 
-![Site Preview](./public/site_image.png)
+[![Site Preview](./public/site_image.png)](https://ishan-kumar.netlify.app)
 
 [Visit](https://your-live-site-link.com](https://ishan-kumar.netlify.app))
 
